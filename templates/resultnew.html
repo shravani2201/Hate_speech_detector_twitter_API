@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Progress</title>
+    <style>
+      body {
+        background: #1da1f2;
+        color: #333;
+        font-family: "cursive", monospace;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        overflow-y: scroll;
+      }
+      .brand-logo {
+        height: 80px;
+        width: 80px;
+        background: url("https://img.icons8.com/color/100/000000/twitter--v2.png");
+        margin: auto;
+        /*border-radius: 50%; */
+        background-size: contain;
+        /* box-sizing: border-box; */
+        /* box-shadow: 7px 7px 10px #cbced1, -7px -7px 10px white; */
+      }
+
+      
+      .brand-title {
+      font-family: "cursive",  monospace;
+      margin-top: 1px;
+      margin-left: 3px;
+      font-weight: 900;
+      font-size: 1.8rem;
+      color: #1DA1F2;
+      letter-spacing: 1px;
+      }
+      .container {
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        padding: 30px;
+        text-align: center;
+        max-width: 800px;
+        margin: 10px auto;
+      }
+
+      h1 {
+        color: #333;
+        font-size: 28px;
+        font-family: "Helvetica", sans-serif;
+        text-align: center;
+      }
+
+      p {
+        color: #555;
+        font-size: 18px;
+        line-height: 1.5;
+        text-align: left;
+        margin: 10px 0;
+      }
+
+      label {
+        color: #444;
+        font-size: 18px;
+        text-align: left;
+        margin: 10px 0;
+      }
+
+      input[type="submit"] {
+        background-color: #ff4d4d;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        border-radius: 5px;
+        margin-top: 20px;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #e74610;
+      }
+
+      select {
+        background-color: #f5f5f5;
+        color: #333;
+        border: 1px solid #ddd;
+        padding: 10px;
+        width: 100%;
+        border-radius: 5px;
+      }
+
+      progress {
+        width: 300px;
+        height: 30px;
+      }
+
+      .graph-container {
+        max-width: 100%;
+        overflow-x: hidden;
+        margin: 10px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>RESULT</h1>
+      <div class="brand-logo"></div>
+      <br />
+      <div class="brand-title">twitter</div>
+      <p>Input Text: {{ input_text }}</p>
+      <p>Prediction: {{ result }}</p>
+      <p>Prediction Cutoff: {{ prediction }}</p>
+
+      <form>
+        <label for="co">Cutoff Progress:</label>
+        <progress id="co" value="{{ cutoff*100 }}" max="100"></progress>
+        <span>{{ cutoff*100 }}%</span>
+        <br />
+        <label for="prediction">Prediction Progress:</label>
+        <progress
+          id="prediction"
+          value="{{ prediction[0][0] }}"
+          max="100"
+        ></progress>
+        <span>{{ prediction[0][0] }}%</span>
+      </form>
+      <h1>BAR GRAPH</h1>
+      <div class="graph-container">
+        <img src="static\bar_graph.png" alt="Bar Graph" />
+      </div>
+      <form method="POST" action="/post">
+        <p>Do you want to post the above text on your Twitter account?</p>
+        <select name="post_or_not">
+          <option value="YES">YES</option>
+          <option value="NO">NO</option>
+        </select>
+        <br />
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
+  </body>
+</html>

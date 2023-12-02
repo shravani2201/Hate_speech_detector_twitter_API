@@ -1,0 +1,392 @@
+<!Doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Language" content="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Hate speech </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
+    <meta name="description" content="This is an example dashboard created using build-in elements and components.">
+    <meta name="msapplication-tap-highlight" content="no">
+    <link href="https://demo.dashboardpack.com/architectui-html-free/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" type="text/css "href="{{ url_for('static',filename='dash.css') }}">
+    <script>
+        $(document).ready(function(){
+            $(".toast").toast('show')({
+              
+            });
+        });
+        </script>
+    <script> 
+      
+        // Here the value is stored in new variable x  
+        function myFunction() { 
+            var x = document.getElementById("myText").value; 
+            document.getElementById("demo").innerHTML = x; 
+        } 
+        </script> 
+</head>
+<body>
+    <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
+        <div class="app-header header-shadow">
+            
+            <div class="app-header__mobile-menu">
+                <div>
+                    <button type="button" class="hamburger hamburger--elastic mobile-toggle-nav">
+                        <span class="hamburger-box">
+                            <span class="hamburger-inner"></span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+            <div class="app-header__menu">
+                <span>
+                    <button type="button" class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav">
+                        <span class="btn-icon-wrapper">
+                            <i class="fa fa-ellipsis-v"></i>
+                        </span>
+                    </button>
+                </span>
+            </div>    
+            <div class="app-header__content">
+                <div class="app-header-left">
+                    <div class="search-wrapper">
+                        <div class="input-holder">
+                            <input type="text" class="search-input" placeholder="Type to search">
+                            <button class="search-icon"><span></span></button>
+                        </div>
+                        <button class="close"></button>
+                    </div>
+                    <ul class="header-menu nav">
+                        <li class="nav-item">
+                            <a href="javascript:void(0);" class="nav-link">
+                                <i class="nav-link-icon fa fa-database"> </i>
+                                Statistics
+                            </a>
+                        </li>
+                        <li class="btn-group nav-item">
+                            <a href="{{ url_for('static',filename='Keys.html') }}" class="nav-link">
+                                <i class="nav-link-icon fa fa-edit"></i>
+                                Post To Twitter
+                            </a>
+                        </li>
+                        <li class="dropdown nav-item">
+                            <a href="javascript:void(0);" class="nav-link">
+                                <i class="nav-link-icon fa fa-cog"></i>
+                                Settings
+                            </a>
+                        </li>
+                        <li class="btn-group nav-item">
+                            <a href="/logout" class="nav-link">
+                                <i class="nav-link-icon fa fa-sign-out"></i>
+                                Logout
+                            </a>
+                        </li>
+                    </ul> 
+                    <div class="toast-container" style="position: absolute; top: 10px; right: 10px;">
+                        <div class="toast fade show">
+                            <div class="toast-header">
+                                <strong class="me-auto"></strong>
+                                <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+                            </div>
+                            <div class="toast-body" style="background-color: aliceblue;">
+                                Logged-in successfully
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <nav class="navbar navbar-expand-sm bg-light">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link disabled">
+                                    <i class="fa fa-user-circle" style="font-size: 24px;"></i>
+                                     {{session.username}}
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>       
+                </div>
+            </div>
+        </div>        
+        
+        <div class="app-main">
+                
+                </div>  
+                <div class="col-md-12">
+                    <div class="app-main__outer">
+                        <div class="app-main__inner">
+                            <div class="app-page-title">
+                                <div class="page-title-wrapper">
+                                    <div class="page-title-heading">
+                                        <div class="page-title-icon">
+                                            <i class="fa fa-line-chart"></i>
+                                        </div>
+                                        <div class="h11">
+                                            Hate Analysis
+                                            <div class="page-title-subheading">
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>            
+                        <div class="row">
+                            <div class="col-md-6 col-xl-4">
+                                <div class="card mb-3 widget-content bg-midnight-bloom">
+                                    <div class="widget-content-wrapper text-white">
+                                        <div class="widget-content-left">
+                                            <div class="widget-heading" style="text-align: left;">Total comments:</div>
+                                        </div>
+                                        <div class="widget-content-right">
+                                            <div class="widget-numbers text-white"><span>{{ count }}</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xl-4">
+                                <div class="card mb-3 widget-content bg-arielle-smile">
+                                    <div class="widget-content-wrapper text-white">
+                                        <div class="widget-content-left">
+                                            <div class="widget-heading">Hate</div>
+                                            <div class="widget-subheading">Number of hate comments</div>
+                                        </div>
+                                        <div class="widget-content-right">
+                                            <div class="widget-numbers text-white"><span>{{count1}}</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xl-4">
+                                <div class="card mb-3 widget-content bg-grow-early">
+                                    <div class="widget-content-wrapper text-white">
+                                        <div class="widget-content-left">
+                                            <div class="widget-heading">No hate</div>
+                                            <div class="widget-subheading">Number of no hate comments</div>
+                                        </div>
+                                        <div class="widget-content-right">
+                                            <div class="widget-numbers text-white"><span>{{count2}}</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-lg-6">
+                                <div class="main-card mb-3 card">
+                                    <div class="card-header">User Name: {{session.username}}
+                                        <div class="btn-actions-pane-right">
+                                            <div role="group" class="btn-group-sm btn-group">
+                                                <button class="active btn btn-focus">Last Week</button>
+                                                <button class="btn btn-focus">All Month</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table class="align-middle mb-0 table table-borderless table-striped table-hover">
+                                            <thead>
+                                            <tr>
+                                                <th class="text-center">S.no</th>
+                                                <th>Post</th>
+                                                <th class="text-center">Hate</th>
+                                                <th class="text-center">No hate</th>
+                                                <th class="text-center">Prediction</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for row in data %}
+                                                <tr>
+                                                    <td class="text-center">{{ row.id }}</td>
+                                                    <td>{{ row.Post }}</td>
+                                                    <td class="text-center">{{ row.Hate }}</td>
+                                                    <td class="text-center">{{ row.Not_hate }}</td>
+                                                    <td class="text-center">
+                                                        <p class="text-center">{{ row.Prediction }}</p>
+                                                    </td>
+                                                </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div> 
+                                    <nav aria-label="Page navigation example">
+                                        <ul class="pagination" id="pagination">
+                                            <!-- Pagination links will be generated here -->
+                                        </ul>
+                                    </nav>
+                                    
+                                    <script>
+                                        document.addEventListener("DOMContentLoaded", function () {
+                                            const table = document.querySelector(".table");
+                                            const rows = table.tBodies[0].rows;
+                                            const rowsPerPage = 6; // Change this to the desired number of rows per page
+                                            let currentPage = 0;
+                                    
+                                            function showPage(page) {
+                                                for (let i = 0; i < rows.length; i++) {
+                                                    rows[i].style.display = i >= page * rowsPerPage && i < (page + 1) * rowsPerPage ? "" : "none";
+                                                }
+                                            }
+                                    
+                                            function updatePagination() {
+                                                const totalPages = Math.ceil(rows.length / rowsPerPage);
+                                                const pagination = document.getElementById("pagination");
+                                                pagination.innerHTML = "";
+                                    
+                                                // Show "Previous" arrow button
+                                                if (currentPage > 0) {
+                                                    const previousLi = document.createElement("li");
+                                                    previousLi.className = "page-item";
+                                                    const previousLink = document.createElement("a");
+                                                    previousLink.className = "page-link";
+                                                    previousLink.href = "#";
+                                                    previousLink.innerHTML = '&laquo; Previous';
+                                                    previousLink.addEventListener("click", function () {
+                                                        currentPage--;
+                                                        showPage(currentPage);
+                                                        updatePagination();
+                                                    });
+                                                    previousLi.appendChild(previousLink);
+                                                    pagination.appendChild(previousLi);
+                                                }
+                                    
+                                                // Show page numbers (1, 2, 3)
+                                                for (let i = 0; i < totalPages; i++) {
+                                                    if (i === currentPage || i === currentPage - 1 || i === currentPage + 1) {
+                                                        const li = document.createElement("li");
+                                                        li.className = "page-item";
+                                                        const a = document.createElement("a");
+                                                        a.className = "page-link";
+                                                        a.href = "#";
+                                                        a.textContent = (i + 1).toString();
+                                    
+                                                        a.addEventListener("click", function () {
+                                                            currentPage = i;
+                                                            showPage(currentPage);
+                                                            updatePagination();
+                                                        });
+                                    
+                                                        li.appendChild(a);
+                                                        pagination.appendChild(li);
+                                                    }
+                                                }
+                                    
+                                                // Show "Next" arrow button
+                                                if (currentPage < totalPages - 1) {
+                                                    const nextLi = document.createElement("li");
+                                                    nextLi.className = "page-item";
+                                                    const nextLink = document.createElement("a");
+                                                    nextLink.className = "page-link";
+                                                    nextLink.href = "#";
+                                                    nextLink.innerHTML = 'Next &raquo;';
+                                                    nextLink.addEventListener("click", function () {
+                                                        currentPage++;
+                                                        showPage(currentPage);
+                                                        updatePagination();
+                                                    });
+                                                    nextLi.appendChild(nextLink);
+                                                    pagination.appendChild(nextLi);
+                                                }
+                                            }
+                                    
+                                            showPage(currentPage);
+                                            updatePagination();
+                                        });
+                                    </script>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-12 col-lg-6">
+                                <div class="mb-3 card">
+                                    <div class="card-header-tab card-header">
+                                        <div class="card-header-title">
+                                            <i class="header-icon lnr-rocket icon-gradient bg-tempting-azure"> </i>
+                                            Bandwidth Reports
+                                        </div>
+                                        <div class="btn-actions-pane-right">
+                                            <div class="nav">
+                                                <a href="#tab-1" data-toggle="tab" class="border-0 btn-pill btn-wide btn-transition active btn btn-outline-alternate">Tab 1</a>
+                                                <a href="#tab-2" data-toggle="tab" class="ml-1 btn-pill btn-wide border-0 btn-transition btn btn-outline-alternate">Tab 2</a>
+                                                <a href="#tab-3" data-toggle="tab" class="ml-1 btn-pill btn-wide border-0 btn-transition btn btn-outline-alternate">Tab 3</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-content">
+                                        <div class="tab-pane fade active show" id="tab-1">
+                                            <div class="widget-chart p-3">
+                                                <div style="height: 350px">
+                                                    <img src="{{ pie_chart_image }}" alt="Pie Chart">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="tab-2">
+                                            <div class="widget-chart p-3">
+                                                <div style="height: 350px">
+                                                    <!-- Include the code for the second graph here -->
+                                                    <img src="{{ bar_path }}" alt="Hate Bar Chart">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="tab-3">
+                                            <div class="widget-chart p-3">
+                                                <div style="height: 350px">
+                                                    <img src="{{ chart_path }}" alt="line Chart">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>         
+                        </div>
+                        <div class="row">
+                            <div class="col-md-11 mx-auto">
+                                <div class="text-center">
+                                    <div class="main-card mb-3 card">
+                                        <form class="row domain-search bg-pblue" method="post" action="/predict">
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <h2 class="page-title-heading"><b>Detect Hate</b></h2>
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <div class="input-group">
+                                                            <input type="search" class="form-control" name="input_text" id="demo">
+                                                            <span class="input-group-addon_2"><input type="submit" value="Post" class="btn btn-danger"></span>
+                                                        </div> 
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                      
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+    <!-- {% if input_text %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h4>Output:</h4>
+                <p><strong>Input Text:</strong> {{ input_text }}</p>
+                <p><strong>Prediction:</strong> {{ result }}</p>
+                <p><strong>Prediction Cutoff:</strong> {{ prediction }}</p>
+            </div>
+        </div>
+    </div>
+    {% endif %} -->
+                    </div>
+                <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="https://demo.dashboardpack.com/architectui-html-free/assets/scripts/main.js"></script></body>
+</html>

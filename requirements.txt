@@ -1,0 +1,16 @@
+os
+re
+string
+pandas
+numpy
+collections
+sklearn
+tensorflow
+matplotlib
+seaborn
+warnings
+flask
+flask_mysqldb
+MySQLdb
+pickle
+keras

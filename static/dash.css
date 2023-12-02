@@ -1,0 +1,91 @@
+body{
+    overflow-x: hidden;
+}
+/* .app-header__content{
+    background-color: #FF416C;
+}
+/* .app-main{
+    background-color: #ff6726;
+} */
+/* .scrollbar-sidebar{
+    background-color: #FF416C;
+}  */
+/* ul .navbar nav{
+    float: right;
+} */
+.domain-search {
+    margin: 0;
+    margin-left: 10px;
+    padding:26px 0;
+}
+
+
+/* .bg-pblue {
+    background-color: #35abdf;
+} */
+.h11{
+    text-align: left;
+    font-size: xx-large;
+    font-weight: bolder;
+}
+
+.domain-search .form-title {
+    margin-top: 0;
+    margin-bottom: 2px;
+    color: #000000;
+    font-family: "Poppins", sans-serif;
+    font-weight: 100;
+}
+
+
+.domain-search .input-group {
+    -webkit-box-shadow: 0px 4px 18px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 18px 0px rgba(0, 0, 0, 0.1);
+}
+
+
+.domain-search .input-group-addon {
+    border: none;
+    border-radius: 50%;
+}
+
+.domain-search .form-title strong {
+    display: block;
+    border-radius: 50%;
+}
+
+.domain-search .form-control {
+    height: 60px;
+    border-radius: 20%;
+    border: 2px black;
+}
+
+.domain-search .form-control:focus {
+
+box-shadow: 0px 0px 0px 0px #ffffff !important;
+
+}
+
+.input-group .input-group-addon [type="submit"], .input-group .input-group-addon button {
+    border: none;
+    border-radius: 0;
+}
+
+.domain-search .btn {
+    padding: 0 54px;
+    line-height: 60px;
+}
+
+
+.btn-primary {
+    padding: 0 28px;
+    line-height: 54px;
+    background: #ff6726;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #286090;
+    border-color: #204d74;
+}
