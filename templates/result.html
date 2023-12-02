@@ -1,0 +1,57 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Result</title>
+</head>
+<body>
+    <h1>Result</h1>
+    <p>Input Text: {{ input_text }}</p>
+    <p>Prediction: {{ result }}</p>
+    <p>Prediction Cutoff: {{ prediction }}</p>
+    <a href="/home"></a>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Progress</title>
+    <style>
+      /* Style for overall progress bar */
+      progress {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        width: 200px;
+        height: 20px;
+        border-radius: 20px;
+        border: 1px solid #434343;
+      }
+      progress::-webkit-progress-bar {
+        background: rgb(221, 221, 221);
+        box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2) inset;
+        border-radius: 20px;
+      }
+      progress::-webkit-progress-value {
+        background-image: linear-gradient(120deg, #ffd173 0, #e74610 55%);
+        border-radius: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Result</h1>
+    <p>Input Text: {{ input_text }}</p>
+    <p>Prediction: {{ result }}</p>
+    <p>Prediction Cutoff: {{ prediction }}</p>
+    
+    <form>
+       
+        <label for="prediction">Prediction Progress:</label>
+        <progress id="prediction" value="{{ prediction[0][0] }}" max="100"></progress>
+        <span>{{ prediction[0][0] }}%</span>
+    </form>
+    <h1>Bar Graph</h1>
+    <img src="static\bar_graph.png" alt="Bar Graph">
+    <a href="{{url_for('home')}}"></a>
+  </body>
+</html>
